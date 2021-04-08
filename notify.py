@@ -1,4 +1,5 @@
 import re
+import sys
 
 from bs4 import BeautifulSoup
 import requests as requests
@@ -18,11 +19,13 @@ def check_availability():
         if match is not None:
             appointments = int(match.group(1))
             if appointments >= 0:
-                print(text)
+                text = '\n\t'.join([line for line in text.split('\n') if line.strip()])
+                print(f"Found Option: \n\t {text} \n\n")
                 found = True
 
     if found:
         print("Found appointments!")
+        sys.exit(1)
     else:
         print("Hard luck!")
 
