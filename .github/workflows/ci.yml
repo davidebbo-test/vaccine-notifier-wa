@@ -3,10 +3,12 @@ name: Python package
 on: 
   push:
   workflow_dispatch:
+  schedule:
+    - cron: '7/29 * * * *'
 
 
 jobs:
-  build:
+  run-notifier:
 
     runs-on: ubuntu-latest
 
